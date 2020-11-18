@@ -3,11 +3,15 @@ const state = () => ({
     all: [
           {
           id:1,
-          description:"This is the description"
+          description:"This is the description",
+          priority_id:1,
+          status_id:1
         },
         {
           id:2,
-          description:"this is the second description"
+          description:"this is the second description",
+          priority_id:1,
+          status_id:1
         }
       ]
 })
