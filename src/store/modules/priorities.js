@@ -1,29 +1,28 @@
+import axios from 'axios';
+
 // initial state
 const state = () => ({
-    all: 
-    [
-        {
-          id:1,
-          name:"low",
-          status_id: 1,
-          priority_id: 2
-        },
-        {
-          id:2,
-          name:"medium",
-          status_id: 1,
-          priority_id: 2
-        },
-        {
-          id:3,
-          name:"High",
-          status_id: 1,
-          priority_id: 2
-        }
-      ]
+    all: []
 })
+
+const mutations = {
+  setPriorities (state, priories){
+    state.all = priories;
+  }
+}
+
+const actions = {
+  fetchAllPriorities ({ commit }) {
+      axios.get(`http://localhost:5678/data/to-do-api/priorities`)
+      .then(res => {
+          commit('setPriorities',res.data.data)
+      });
+  }
+}
 
 export default {
     namespaced: true,
     state,
+    actions,
+    mutations
 }

@@ -1,0 +1,27 @@
+{
+  "sceneName": "all",
+  "data": {
+    "data": [
+      {
+        "id": 1,
+        "description": "test 1",
+        "priority_id": 1,
+        "status_id": 1
+      },
+      {
+        "id": 2,
+        "description": "test 2",
+        "priority_id": 1,
+        "status_id": 1
+      }
+    ],
+    "success": true
+  },
+  "interfaceUniqId": "f891387d-070a-46a8-9202-b16b2135060b",
+  "contextConfig": {
+    "responseDelay": 0,
+    "responseStatus": 200,
+    "responseHeaders": {}
+  },
+  "uniqId": "23118dd4-9d9f-402f-9b47-b79f0a55b0ce"
+}
