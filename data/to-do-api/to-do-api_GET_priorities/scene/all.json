@@ -1,0 +1,27 @@
+{
+  "sceneName": "all",
+  "data": {
+    "success": true,
+    "data": [
+      {
+        "id": 1,
+        "name": "low"
+      },
+      {
+        "id": 2,
+        "name": "medium"
+      },
+      {
+        "id": 3,
+        "name": "High"
+      }
+    ]
+  },
+  "interfaceUniqId": "8d71064c-b78e-4ecb-8b51-ba1337b887c1",
+  "contextConfig": {
+    "responseDelay": 0,
+    "responseStatus": 200,
+    "responseHeaders": {}
+  },
+  "uniqId": "877bd188-726c-440a-8ece-069f087ec4d7"
+}

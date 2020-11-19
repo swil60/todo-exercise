@@ -1,7 +1,7 @@
 {
   "protocol": "http",
   "pathname": "to-do",
-  "method": "ALL",
+  "method": "GET",
   "projectUniqId": "765c63ae-04d3-4ef6-9b28-767c36659df2",
   "description": "get a list of all the todo item",
   "currentScene": "all",

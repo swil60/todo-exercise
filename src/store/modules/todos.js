@@ -1,33 +1,35 @@
 // initial state
+import axios from 'axios';
 const state = () => ({
-    all: [
-          {
-          id:1,
-          description:"This is the description",
-          priority_id:1,
-          status_id:1
-        },
-        {
-          id:2,
-          description:"this is the second description",
-          priority_id:1,
-          status_id:1
-        }
-      ]
+    all: []
 })
 
 
 // mutations
 const mutations = {
-  addNewTodo (state, newTodo ) {
-   let lastTodo =  state.all[state.all.length -1] ;
-   newTodo.id = lastTodo.id + 1; //increment the id
-   state.all.push(newTodo)
+  setTodos (state, todos){
+    state.all = todos;
   },
+  addNewTodo (state, newTodo ) {
+   let lastTodo =  state.all[state.all.length -1] 
+   newTodo.id = lastTodo.id + 1 //increment the id
+   state.all.push(newTodo)
+  }
+}
+
+const actions = {
+  fetchAllTodo ({ commit }) {
+    axios.get(`http://localhost:5678/data/to-do-api/to-do`)
+      .then(res => {
+        commit('setTodos',res.data.data)
+      });
+  //  commit('increment')
+  }
 }
 
 export default {
     namespaced: true,
     state,
-    mutations
+    mutations,
+    actions
 }
