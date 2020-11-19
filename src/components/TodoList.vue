@@ -3,87 +3,90 @@
   <h1>
     Todos
   </h1>
-  <div class="row">
-    <div v-for="item in todos" :key="item.id" class="col-3">
-     <div class="card">
-       <div class="card-body">
-         <div class="row">
-           <div class="col-12">
-            {{ item.description }}
-           </div>
-         </div>
-         <div class="row">
-           <div class="col-6">
-            {{ getStatusName(item.status_id) }}
-           </div>
-           <div class="col-6">
-            {{ getPriorityName(item.priority_id) }}
-           </div>
-         </div> 
-            <!-- Example split danger button -->
-            <div class="btn-group">
-              <button type="button" class="btn btn-danger">Action</button>
-              <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div class="dropdown-menu">
-                <a v-for="status in statuses" :key="status.id" class="dropdown-item" href="#">
-                  {{ status.name }}
-                </a>
-              </div>
-            </div>
-       </div>
+
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <i class="fas fa-2x fa-chevron-down" @click="markAllNotesAsDone()"></i>
+        </div>
+        <div class="col-md-9">
+            <todo-list-form :todo="newTodo" :commitMethod="'todos/createTodo'" @submitted="clearNewTodo()"></todo-list-form>
+        </div>
       </div>
-    </div>
-  </div>
+    </li>
+    <li v-for="item in filteredTodos" :key="item.id" class="list-group-item">
+      <todo-list-item :todo="item"></todo-list-item>
+    </li>
+    <li class="list-group-item">
+      <todo-list-toolbar @apply-filter-type="setFilterType"></todo-list-toolbar>
+    </li>
+  </ul>
 </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
+import TodoListForm from './TodoListForm.vue'
+import TodoListItem from './TodoListItem.vue'
+import TodoListToolbar from './TodoListToolbar.vue'
 
 export default {
+  components: { 
+    TodoListForm,
+    TodoListItem,
+    TodoListToolbar
+  },
   name: 'TodoList',
   methods:{
-    removeTodo(id){
-        console.log(id)
+    clearNewTodo(){
+      this.newTodo = {
+          id:null,
+          description:null,
+          is_complete:null,
+          priority_id:null
+      };
     },
     retriveData()
     {
-      this.$store.dispatch('todos/fetchAllTodo')
-      this.$store.dispatch('statuses/fetchAllStatuses')
-      this.$store.dispatch('priorities/fetchAllPriorities')
+        this.$store.dispatch('todos/fetchAllTodo')
     },
-    getStatusName(status_id)
+    setFilterType(event,filterType)
     {
-      let activeStatus = this.statuses.find(status => status.id == status_id)
-      if(activeStatus)
-      {
-        return activeStatus.name;
-      }
-      return null;
+      this.filterType = filterType
     },
-    getPriorityName(priority_id)
+    markAllNotesAsDone()
     {
-      let activePriority = this.priorities.find(priority => priority.id == priority_id)
-      if(activePriority)
-      {
-        return activePriority.name;
-      }
-      return null;
+      this.$store.commit('todos/markAllToDosAsDone')
     }
   },
- computed: mapState({
-    priorities: state => state.priorities.all,
-    statuses: state => state.statuses.all,
-    todos: state => state.todos.all,
+ computed:{
+    filteredTodos () { 
+      switch (this.filterType) {
+        case 'completed':
+            return this.completeTodos
+        case 'active':
+            return this.incompleteTodos
+        default:
+        return this.allTodos
+      }
+    },
+  ...mapGetters({
+    completeTodos: 'todos/completeTodos',
+    incompleteTodos: 'todos/incompleteTodos'
   }),
+  ...mapState({
+    priorities: state => state.priorities.all,
+    allTodos: state => state.todos.all,
+  }),
+ },
   data() {
     return {
+        filterType:'all',
         newTodo:{
           id:null,
           description:null,
-          status_id:null,
+          is_complete:null,
           priority_id:null
         }
     }
@@ -92,11 +95,14 @@ export default {
     // `this` points to the vm instance
     this.retriveData()
   }
-  
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+ .list-group-item
+    {
+      padding: 0;
+      padding: 0.2rem 0rem;
+    }
 </style>

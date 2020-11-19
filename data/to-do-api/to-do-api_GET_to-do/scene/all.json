@@ -6,13 +6,13 @@
         "id": 1,
         "description": "test 1",
         "priority_id": 1,
-        "status_id": 1
+        "is_complete": false
       },
       {
         "id": 2,
         "description": "test 2",
         "priority_id": 1,
-        "status_id": 1
+        "is_complete": false
       }
     ],
     "success": true
