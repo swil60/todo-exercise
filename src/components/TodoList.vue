@@ -1,7 +1,7 @@
 <template>
 <div>
-  <h1>
-    Todos
+  <h1 class="text-center">
+    todos
   </h1>
 
   <ul class="list-group">
@@ -11,14 +11,14 @@
           <i class="fas fa-2x fa-chevron-down" @click="markAllNotesAsDone()"></i>
         </div>
         <div class="col-md-9">
-            <todo-list-form :todo="newTodo" :commitMethod="'todos/createTodo'" @submitted="clearNewTodo()"></todo-list-form>
+            <todo-list-form :allowEmpty="true" :todo="newTodo" :commitMethod="'todos/createTodo'" @submitted="clearNewTodo()"></todo-list-form>
         </div>
       </div>
     </li>
     <li v-for="item in filteredTodos" :key="item.id" class="list-group-item">
       <todo-list-item :todo="item"></todo-list-item>
     </li>
-    <li class="list-group-item">
+    <li class="list-group-item footer">
       <todo-list-toolbar @apply-filter-type="setFilterType"></todo-list-toolbar>
     </li>
   </ul>
@@ -100,9 +100,39 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+ h1{
+    font-weight: 100 !important;
+    font-size: 5rem;
+    color: rgba(175, 47, 47, 0.15);
+  }
+
+.list-group {
+  border-radius: 0;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+}
  .list-group-item
     {
       padding: 0;
       padding: 0.2rem 0rem;
-    }
+  }
+
+  .footer
+  {
+    color: #777;
+  }
+
+  .footer::before
+  {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    overflow: hidden;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+  }
 </style>

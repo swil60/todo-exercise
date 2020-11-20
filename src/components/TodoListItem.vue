@@ -1,15 +1,18 @@
 <template>
     <div class="row todo-item">
-      <div class="col-3 text-center">
+      <div class="col-2 text-center">
         <i class="far fa-3x" @click="toggleCompleteStatus()" :class="{'fa-check-circle text-success':todo.is_complete,'fa-circle':!todo.is_complete}"></i>
       </div>
-      <div class="col-9">
+      <div class="col-10">
         <i @click="removeItem()"  class="far fa-3x fa-times-circle text-danger complete-icon"></i>
-        <todo-list-form v-if="onEditState" :todo="todo" :commitMethod="'todos/updateTodo'" @submitted="toggleEditState()"></todo-list-form>
+        <todo-list-form v-if="onEditState" :allowEmpty="false" :todo="todo" :commitMethod="'todos/updateTodo'" @submitted="toggleEditState"></todo-list-form>
         <div v-else>
-            <div @dblclick="toggleEditState()" :class="{'completed-item':todo.is_complete}">
-                {{ todo.description }}
-            </div>
+          <div class="clickable-item">
+              <div @dblclick="toggleEditState()" :class="{'completed-item':todo.is_complete}">
+                  {{ todo.description }}
+              </div>
+          </div>
+            
         </div>
       </div>
     </div>
@@ -60,7 +63,15 @@ export default {
       right: 10px;
       opacity: 0;
     }
-    .todo-item:hover .complete-icon{
-      opacity: 1;
-    }
+    
+  .clickable-item{
+    padding: 0.8rem 2rem;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .todo-item:hover .complete-icon{
+    opacity: 1;
+  }
 </style>

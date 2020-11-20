@@ -1,18 +1,12 @@
 <template>
     <div>
-        <div class="alert alert-danger" v-if="validationErrors.length > 0">
-            <ul>
-                <li v-for="(validationError,index) in validationErrors" :key="index">
-                    {{ validationError }}
-                </li>
-            </ul>
-        </div>
-        <form @submit="submitTodo()">
           <div class="form-group">
               <label for="description-field" class="sr-only">Description</label>
-              <input placeholder="What needs to be Done?" id="description-field" v-model="todo.description" class="form-control" type="text">
+              <input @keyup.enter.stop="$event.target.blur()" @blur="submitTodo()" v-todo-focus="focus" :class="{'is-invalid':validationError}" placeholder="What needs to be done?" id="description-field" v-model="todo.description" class="form-control" type="text">
+                <div v-if="validationError" class="invalid-feedback">
+                  {{ validationError }}
+                </div>
           </div>
-        </form> 
     </div>
 </template>
 
@@ -21,28 +15,26 @@ export default {
   name: 'TodoForm',
   methods:{
     submitTodo(){
+              
         this.validate();
-        if(this.validationErrors.length == 0)
+        if(this.validationError == null)
         {
             this.$store.commit(this.commitMethod,this.todo);
-            this.clearValidationErrors();
+            this.clearValidationError();
+            this.focus = false;
             this.$emit('submitted',this.todo)
         }
     },
     validate(){
-        this.clearValidationErrors();
-        if(this.todo.description == '')
+        this.clearValidationError();
+        if(this.todo.description == null || (this.todo.description.trim().length == 0))
         {
-            this.validationErrors.push("Please set the description");
+            this.validationError = "Please set a valid description";
         }
     },
-    clearValidationErrors()
+    clearValidationError()
     {
-        this.validationErrors = [];
-    },
-    retriveData()
-    {
-      this.$store.dispatch('priorities/fetchAllPriorities')
+        this.validationError = null;
     }
   },
   props:{
@@ -53,18 +45,21 @@ export default {
     commitMethod:{
       type:String,
       required:true
+    },
+    allowEmpty:{
+      type:Boolean,
+      required:true
     }
   },
   data() {
     return {
-        validationErrors:[]
+        focus:false,
+        validationError:null
     }
   },
-  created() {
-    // `this` points to the vm instance
-    this.retriveData()
+  created(){
+    this.focus = true
   }
-  
 }
 </script>
 
@@ -77,5 +72,6 @@ export default {
   .form-control{
       border: 0;
       border-radius: 0;
+      padding: 1.5rem .75rem;
   }
 </style>
