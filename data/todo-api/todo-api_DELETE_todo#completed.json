@@ -1,0 +1,10 @@
+{
+  "protocol": "http",
+  "pathname": "todo/completed",
+  "method": "DELETE",
+  "projectUniqId": "523c1983-fa3f-4b1e-b668-38e4bd16c389",
+  "description": "mark all todos as completed",
+  "currentScene": "success",
+  "proxyConfig": {},
+  "uniqId": "af11f394-6fc8-48c9-b999-bf548f81bc03"
+}

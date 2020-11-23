@@ -1,0 +1,10 @@
+{
+  "protocol": "http",
+  "pathname": "todo/mark-all-as-done",
+  "method": "PUT",
+  "projectUniqId": "523c1983-fa3f-4b1e-b668-38e4bd16c389",
+  "description": "mark all todos as completed",
+  "currentScene": "success",
+  "proxyConfig": {},
+  "uniqId": "b4e33bed-b84d-4c8e-8d2a-c1145ab36485"
+}

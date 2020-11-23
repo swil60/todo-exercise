@@ -67,6 +67,14 @@ const actions = {
     const res = await axios.delete(`${base_url}/data/todo-api/todo/${todoId}`)
     commit('removeTodo',todoId) 
   },
+  async clearCompleted ({commit}){
+    const res = await axios.delete(`${base_url}/data/todo-api/todo/completed`)
+    commit('clearCompleted') 
+  },
+  async markAllToDosAsDone ({commit}){
+    const res = await axios.put(`${base_url}/data/todo-api/todo/mark-all-as-done`)
+    commit('markAllToDosAsDone') 
+  },
 }
 
 const getters = {

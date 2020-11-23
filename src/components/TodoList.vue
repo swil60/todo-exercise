@@ -64,7 +64,11 @@ export default {
     },
     markAllNotesAsDone()
     {
-      this.$store.commit('todos/markAllToDosAsDone')
+      try {
+          this.$store.dispatch('todos/markAllToDosAsDone')
+      } catch (error) {
+        
+      }
     }
   },
  computed:{

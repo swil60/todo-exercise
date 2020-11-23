@@ -1,9 +1,8 @@
-import Vue from 'vue'
-export default (el,binding)=>{
-    Vue.nextTick(() => {
+export default {
+    inserted:(el,binding)=>{
         if(binding.value)
         {
             el.focus()
         }
-    });
+    }
 }

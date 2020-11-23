@@ -2,7 +2,9 @@
     <div>
           <div class="form-group">
               <label for="description-field" class="sr-only">Description</label>
-              <input @keyup.enter.stop="$event.target.blur()" @blur="submitTodo()" v-todo-focus="focus" :class="{'is-invalid':validationError}" placeholder="What needs to be done?" id="description-field" v-model="todo.description" class="form-control" type="text">
+              <!--   -->
+              <!--  -->
+              <input v-todo-focus="focus"  @keyup.enter.stop="$event.target.blur()" @blur.stop="submitTodo($event)" :class="{'is-invalid':validationError}" placeholder="What needs to be done?" id="description-field" v-model="todo.description" class="form-control" type="text">
                 <div v-if="validationError" class="invalid-feedback">
                   {{ validationError }}
                 </div>
@@ -14,10 +16,11 @@
 export default {
   name: 'TodoForm',
   methods:{
-    async submitTodo(){
+    async submitTodo(event){
+          console.log("i got fired",event);
         if(this.allowEmpty && this.isDescriptionEmpty)
         {
-          return
+
         }else
         {
           this.validate();

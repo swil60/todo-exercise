@@ -51,7 +51,7 @@ export default {
   methods:{
    clearCompletedNotes()
    {
-     this.$store.commit('todos/clearCompleted')
+     this.$store.dispatch('todos/clearCompleted')
    },
    setFilter($event,activeFilter)
    {
