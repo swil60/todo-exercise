@@ -1,0 +1,11 @@
+{
+  "type": "request",
+  "data": {
+    "schemaData": {
+      "success": true,
+      "message": "Succeffuly removed the todo"
+    }
+  },
+  "interfaceUniqId": "829dcd29-20ce-4c70-ae1f-6160bd3587ed",
+  "uniqId": "b844b0c1-6e06-4d97-a0f9-dde389e9ea17"
+}

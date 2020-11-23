@@ -1,6 +1,6 @@
 
-import TodoList from '../components/TodoList'
-import TodoListForm from '../components/TodoListForm'
+import TodoList from '../components/TodoList.vue'
+import TodoListForm from '../components/TodoListForm.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 

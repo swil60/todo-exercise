@@ -2,9 +2,9 @@
   "protocol": "http",
   "pathname": "to-do",
   "method": "POST",
-  "projectUniqId": "765c63ae-04d3-4ef6-9b28-767c36659df2",
-  "description": "storing ne data",
-  "currentScene": "",
+  "projectUniqId": "523c1983-fa3f-4b1e-b668-38e4bd16c389",
+  "description": "creating a new todo",
+  "currentScene": "success",
   "proxyConfig": {},
-  "uniqId": "b6e16281-100d-4a57-9ae5-bf10690d5cc8"
+  "uniqId": "564e1a33-aeb0-4951-a67f-07bca0511313"
 }

@@ -1,15 +1,15 @@
 {
-  "sceneName": "Error",
+  "sceneName": "error",
   "data": {
     "data": [],
     "success": false,
     "message": "internal server error"
   },
-  "interfaceUniqId": "f891387d-070a-46a8-9202-b16b2135060b",
+  "interfaceUniqId": "87511c8a-dfd9-4e93-ab47-36e07c5921c0",
   "contextConfig": {
     "responseDelay": 0,
     "responseStatus": "500",
     "responseHeaders": {}
   },
-  "uniqId": "44cc2394-38f9-4939-b5a0-233274153031"
+  "uniqId": "f6c48e5f-5664-45a0-abfe-5f2804410bad"
 }
