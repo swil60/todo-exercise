@@ -3,8 +3,7 @@
       <div class="col-2 text-center">
         <i class="far fa-3x" @click="toggleCompleteStatus()" :class="{'fa-check-circle text-success':todo.is_complete,'fa-circle':!todo.is_complete}"></i>
       </div>
-      <div class="col-10">
-        <i @click="removeItem()"  class="far fa-3x fa-times-circle text-danger complete-icon float-right"></i>
+      <div class="col-9">
         <todo-list-form v-if="onEditState" :allowEmpty="false" :todo="todo" :actionMethod="'todos/updateTodo'" @submitted="toggleEditState"></todo-list-form>
         <div v-else>
           <div class="clickable-item">
@@ -12,8 +11,10 @@
                   {{ todo.description }}
               </div>
           </div>
-            
         </div>
+      </div>
+      <div class="col-1">
+          <i @click="removeItem()"  class="far fa-3x fa-times-circle text-danger complete-icon float-right"></i>
       </div>
     </div>
 </template>
