@@ -4,7 +4,7 @@
         <i class="far fa-3x" @click="toggleCompleteStatus()" :class="{'fa-check-circle text-success':todo.is_complete,'fa-circle':!todo.is_complete}"></i>
       </div>
       <div class="col-10">
-        <i @click="removeItem()"  class="far fa-3x fa-times-circle text-danger complete-icon"></i>
+        <i @click="removeItem()"  class="far fa-3x fa-times-circle text-danger complete-icon float-right"></i>
         <todo-list-form v-if="onEditState" :allowEmpty="false" :todo="todo" :actionMethod="'todos/updateTodo'" @submitted="toggleEditState"></todo-list-form>
         <div v-else>
           <div class="clickable-item">
@@ -68,8 +68,6 @@ export default {
     }
     .complete-icon
     {
-      position: absolute;
-      right: 10px;
       opacity: 0;
     }
     

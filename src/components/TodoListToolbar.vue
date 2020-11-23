@@ -1,7 +1,9 @@
 <template>
   <div class="row">
   <div class="col-3">
+      <div class="ml-3">
         {{ incompleteTodosCount }} Items left
+      </div>
   </div>
     <div class="col-6">
       <div class="text-center">
