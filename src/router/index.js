@@ -8,8 +8,7 @@ Vue.use(VueRouter)
 
 
 const routes = [
-    { path: '/', component: TodoList },
-    { path: '/create', component: TodoListForm }
+    { path: '/', component: TodoList }
 ]
 
 export default new VueRouter({
