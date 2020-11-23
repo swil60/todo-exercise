@@ -10,7 +10,7 @@
   <ul v-else class="list-group">
     <li class="list-group-item">
       <div class="row">
-        <div class="col-md-3 text-center">
+        <div class="col-md-2 text-center mt-2">
           <i class="fas fa-2x fa-chevron-down" @click="markAllNotesAsDone()"></i>
         </div>
         <div class="col-md-9">
