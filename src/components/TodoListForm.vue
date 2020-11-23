@@ -15,26 +15,29 @@ export default {
   name: 'TodoForm',
   methods:{
     async submitTodo(){
-              
-        this.validate();
-        if(this.validationError == null)
+        if(this.allowEmpty && this.isDescriptionEmpty)
         {
-            try {
-              await this.$store.dispatch(this.actionMethod,this.todo)
-            } catch (error) {
-              console.log(error);
+          return
+        }else
+        {
+          this.validate();
+            if(this.validationError == null)
+            {
+                try {
+                  await this.$store.dispatch(this.actionMethod,this.todo)
+                } catch (error) {
+                  console.log(error);
+                }
+                this.clearValidationError();
+                this.focus = false;
+                this.$emit('submitted',this.todo)
             }
-
-          //  this.$store.commit(this.commitMethod,this.todo);
-
-            this.clearValidationError();
-            this.focus = false;
-            this.$emit('submitted',this.todo)
         }
+       
     },
     validate(){
         this.clearValidationError();
-        if(this.todo.description == null || (this.todo.description.trim().length == 0))
+        if(this.isDescriptionEmpty)
         {
             this.validationError = "Please set a valid description";
         }
@@ -56,6 +59,12 @@ export default {
     allowEmpty:{
       type:Boolean,
       required:true
+    }
+  },
+  computed:
+  {
+    isDescriptionEmpty(){
+      return this.todo.description == null || (this.todo.description.trim().length == 0)
     }
   },
   data() {

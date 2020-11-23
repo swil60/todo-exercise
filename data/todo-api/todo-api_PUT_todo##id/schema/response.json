@@ -1,0 +1,27 @@
+{
+  "type": "response",
+  "data": {
+    "schemaData": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "description": "server side success"
+        },
+        "data": {
+          "type": "object",
+          "description": "server side success",
+          "properties": {},
+          "required": []
+        }
+      },
+      "required": [
+        "success",
+        "data"
+      ]
+    }
+  },
+  "interfaceUniqId": "544a8f3d-b5d0-4ab2-b1f4-7887b9cd10bb",
+  "uniqId": "db429635-5fa8-4d57-b580-4ad96b880bcb"
+}

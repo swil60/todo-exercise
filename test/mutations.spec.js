@@ -92,4 +92,55 @@
             })
             // assert result
         })
+
+        it('remove to do', () => {
+            // mock state
+            const state = { all:[
+                {
+                    "id": 1,
+                    "description": "test 1",
+                    "is_complete": false
+                },
+                {
+                    "id": 2,
+                    "description": "test 2",
+                    "is_complete": false
+                }
+            ]}
+        
+            const removeTodo = {
+                "id": 2,
+                "description": "This is an update",
+                "is_complete": true
+            }
+            // apply mutation
+            todos.mutations.removeTodo(state,removeTodo.id)
+            // assert result
+            expect(state.all).to.deep.not.include(removeTodo)
+        })
+    
+        it('clear completed todos', () => {
+            // mock state
+            const state = { all:[
+                {
+                    "id": 1,
+                    "description": "test 1",
+                    "is_complete": false
+                },
+                {
+                    "id": 2,
+                    "description": "test 2",
+                    "is_complete": true
+                }
+            ]}
+        
+           
+            // apply mutation
+            todos.mutations.clearCompleted(state)
+
+            state.all.forEach(todo=>{
+                expect(todo).to.not.include({"is_complete": true})
+            })
+            // assert result
+        })
     })

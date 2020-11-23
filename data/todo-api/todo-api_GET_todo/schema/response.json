@@ -42,7 +42,8 @@
         }
       },
       "required": []
-    }
+    },
+    "enableSchemaValidate": false
   },
   "interfaceUniqId": "87511c8a-dfd9-4e93-ab47-36e07c5921c0",
   "uniqId": "0d4d867e-0312-4e49-9c8e-51483abf99f0"

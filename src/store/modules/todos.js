@@ -52,21 +52,19 @@ const mutations = {
 
 const actions = {
   async fetchAllTodo ({ commit }) {
-    const res = await axios.get(`${base_url}/data/to-do-api/to-do`)
+    const res = await axios.get(`${base_url}/data/todo-api/todo`)
     commit('setTodos',res.data.data)
   },
   async createTodo ({commit},todo){
-    const res = await axios.post(`${base_url}/data/to-do-api/to-do`,todo)
-    console.log(res)
+    const res = await axios.post(`${base_url}/data/todo-api/todo`,todo)
     commit('createTodo',todo) 
   },
   async updateTodo ({commit},todo){
-    const res = await axios.put(`${base_url}/data/to-do-api/to-do/${todo.id}`,todo)
-    console.log(res)
+    const res = await axios.put(`${base_url}/data/todo-api/todo/${todo.id}`,todo)
     commit('updateTodo',todo) 
   },
   async removeTodo ({commit},todoId){
-    const res = await axios.delete(`${base_url}/data/to-do-api/to-do/${todoId}`)
+    const res = await axios.delete(`${base_url}/data/todo-api/todo/${todoId}`)
     commit('removeTodo',todoId) 
   },
 }
