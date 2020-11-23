@@ -3,6 +3,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const DataHub = require('macaca-datahub');
 const datahubMiddleware = require('datahub-proxy-middleware');
+const Dotenv = require('dotenv-webpack');
+
 
 const datahubConfig = {
   port: 5678,
@@ -67,6 +69,10 @@ module.exports = {
   },
   plugins: [
     // make sure to include the plugin!
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new Dotenv({
+      path:'.env',
+      process: false
+    })
   ]
 };
