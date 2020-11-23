@@ -1,0 +1,10 @@
+{
+  "protocol": "http",
+  "pathname": "to-do/:id",
+  "method": "DELETE",
+  "projectUniqId": "765c63ae-04d3-4ef6-9b28-767c36659df2",
+  "description": "remove a todo",
+  "currentScene": "",
+  "proxyConfig": {},
+  "uniqId": "690d9eb4-8abd-408b-91e5-d88866aeba12"
+}

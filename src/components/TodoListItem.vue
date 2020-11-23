@@ -5,7 +5,7 @@
       </div>
       <div class="col-10">
         <i @click="removeItem()"  class="far fa-3x fa-times-circle text-danger complete-icon"></i>
-        <todo-list-form v-if="onEditState" :allowEmpty="false" :todo="todo" :commitMethod="'todos/updateTodo'" @submitted="toggleEditState"></todo-list-form>
+        <todo-list-form v-if="onEditState" :allowEmpty="false" :todo="todo" :actionMethod="'todos/updateTodo'" @submitted="toggleEditState"></todo-list-form>
         <div v-else>
           <div class="clickable-item">
               <div @dblclick="toggleEditState()" :class="{'completed-item':todo.is_complete}">
@@ -39,14 +39,23 @@ export default {
     {
         this.onEditState = !this.onEditState;
     },
-    toggleCompleteStatus()
+    async toggleCompleteStatus()
     {
-        this.todo.is_complete = !this.todo.is_complete;
-        this.$store.commit('todos/updateTodo',this.todo)
+        try {
+            this.todo.is_complete = !this.todo.is_complete;
+            await this.$store.dispatch('todos/updateTodo',this.todo)
+        } catch (error) {
+            console.log(error)
+        }
+    
     },
-    removeItem()
+    async removeItem()
     {
-        this.$store.commit('todos/removeTodo',this.todo)
+      try {
+          await this.$store.dispatch('todos/removeTodo',this.todo)
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }

@@ -4,14 +4,17 @@
     todos
   </h1>
 
-  <ul class="list-group">
+  <div v-if="hasError" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  <ul v-else class="list-group">
     <li class="list-group-item">
       <div class="row">
         <div class="col-md-3 text-center">
           <i class="fas fa-2x fa-chevron-down" @click="markAllNotesAsDone()"></i>
         </div>
         <div class="col-md-9">
-            <todo-list-form :allowEmpty="true" :todo="newTodo" :commitMethod="'todos/createTodo'" @submitted="clearNewTodo()"></todo-list-form>
+            <todo-list-form :allowEmpty="true" :todo="newTodo" :actionMethod="'todos/createTodo'" @submitted="clearNewTodo()"></todo-list-form>
         </div>
       </div>
     </li>
@@ -47,9 +50,13 @@ export default {
           priority_id:null
       };
     },
-    retriveData()
+    async retriveData()
     {
-        this.$store.dispatch('todos/fetchAllTodo')
+      try {
+        await this.$store.dispatch('todos/fetchAllTodo')
+      } catch (error) {
+        this.errorMessage = error.response.data.message;
+      }
     },
     setFilterType(event,filterType)
     {
@@ -71,18 +78,21 @@ export default {
         return this.allTodos
       }
     },
+    hasError() {
+      return this.errorMessage != null && this.errorMessage.length > 0
+    },
   ...mapGetters({
     completeTodos: 'todos/completeTodos',
     incompleteTodos: 'todos/incompleteTodos'
   }),
   ...mapState({
-    priorities: state => state.priorities.all,
     allTodos: state => state.todos.all,
   }),
  },
   data() {
     return {
         filterType:'all',
+        errorMessage:null,
         newTodo:{
           id:null,
           description:null,

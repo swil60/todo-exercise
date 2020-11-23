@@ -1,0 +1,10 @@
+{
+  "protocol": "http",
+  "pathname": "to-do",
+  "method": "POST",
+  "projectUniqId": "765c63ae-04d3-4ef6-9b28-767c36659df2",
+  "description": "storing ne data",
+  "currentScene": "",
+  "proxyConfig": {},
+  "uniqId": "b6e16281-100d-4a57-9ae5-bf10690d5cc8"
+}

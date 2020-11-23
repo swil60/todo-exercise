@@ -1,0 +1,10 @@
+{
+  "protocol": "http",
+  "pathname": "to-do/:id",
+  "method": "PUT",
+  "projectUniqId": "765c63ae-04d3-4ef6-9b28-767c36659df2",
+  "description": "updating a todo resource",
+  "currentScene": "update",
+  "proxyConfig": {},
+  "uniqId": "8954322c-d820-40a1-a5c4-9cb927520144"
+}

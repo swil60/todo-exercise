@@ -50,13 +50,25 @@ const mutations = {
 }
 
 const actions = {
-  fetchAllTodo ({ commit }) {
-    axios.get(`http://localhost:5678/data/to-do-api/to-do`)
-      .then(res => {
-        commit('setTodos',res.data.data)
-      });
-  //  commit('increment')
-  }
+  async fetchAllTodo ({ commit }) {
+    const res = await axios.get(`http://localhost:5678/data/to-do-api/to-do`)
+    commit('setTodos',res.data.data)
+  },
+  async createTodo ({commit},todo){
+    const res = await axios.post(`http://localhost:5678/data/to-do-api/to-do`,todo)
+    console.log(res)
+    commit('createTodo',todo) 
+  },
+  async updateTodo ({commit},todo){
+    const res = await axios.put(`http://localhost:5678/data/to-do-api/to-do/${todo.id}`,todo)
+    console.log(res)
+    commit('updateTodo',todo) 
+  },
+  async removeTodo ({commit},todo){
+    const res = await axios.delete(`http://localhost:5678/data/to-do-api/to-do/${todo.id}`)
+    console.log(res)
+    commit('removeTodo',todo) 
+  },
 }
 
 const getters = {

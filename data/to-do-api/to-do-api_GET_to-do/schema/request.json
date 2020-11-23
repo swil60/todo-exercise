@@ -1,0 +1,12 @@
+{
+  "type": "request",
+  "data": {
+    "schemaData": {
+      "message": "internal server error, please try again later",
+      "data": [],
+      "success": false
+    }
+  },
+  "interfaceUniqId": "f891387d-070a-46a8-9202-b16b2135060b",
+  "uniqId": "8ee83087-d56b-4615-a839-c737c0173b72"
+}

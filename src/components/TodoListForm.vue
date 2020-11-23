@@ -14,12 +14,19 @@
 export default {
   name: 'TodoForm',
   methods:{
-    submitTodo(){
+    async submitTodo(){
               
         this.validate();
         if(this.validationError == null)
         {
-            this.$store.commit(this.commitMethod,this.todo);
+            try {
+              await this.$store.dispatch(this.actionMethod,this.todo)
+            } catch (error) {
+              console.log(error);
+            }
+
+          //  this.$store.commit(this.commitMethod,this.todo);
+
             this.clearValidationError();
             this.focus = false;
             this.$emit('submitted',this.todo)
@@ -42,7 +49,7 @@ export default {
       type:Object,
       required:true
     },
-    commitMethod:{
+    actionMethod:{
       type:String,
       required:true
     },
