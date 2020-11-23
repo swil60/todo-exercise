@@ -42,8 +42,8 @@ const mutations = {
       return todo
     })
    },
-   removeTodo (state, currentTodo ) {
-    state.all = state.all.filter(todo => todo.id != currentTodo.id);
+   removeTodo (state, id ) {
+    state.all = state.all.filter(todo => todo.id != id);
    },
    clearCompleted(state){
     state.all = state.all.filter(todo => !todo.is_complete);
@@ -65,10 +65,9 @@ const actions = {
     console.log(res)
     commit('updateTodo',todo) 
   },
-  async removeTodo ({commit},todo){
-    const res = await axios.delete(`${base_url}/data/to-do-api/to-do/${todo.id}`)
-    console.log(res)
-    commit('removeTodo',todo) 
+  async removeTodo ({commit},todoId){
+    const res = await axios.delete(`${base_url}/data/to-do-api/to-do/${todoId}`)
+    commit('removeTodo',todoId) 
   },
 }
 

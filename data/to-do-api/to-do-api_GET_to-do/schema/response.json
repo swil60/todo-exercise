@@ -1,0 +1,49 @@
+{
+  "type": "response",
+  "data": {
+    "schemaData": {
+      "type": "object",
+      "description": "",
+      "properties": {
+        "data": {
+          "type": "array",
+          "description": "",
+          "items": {
+            "type": "object",
+            "description": "",
+            "properties": {
+              "id": {
+                "type": "number",
+                "description": ""
+              },
+              "description": {
+                "type": "string",
+                "description": ""
+              },
+              "priority_id": {
+                "type": "number",
+                "description": ""
+              },
+              "is_complete": {
+                "type": "boolean",
+                "description": ""
+              }
+            },
+            "required": []
+          }
+        },
+        "success": {
+          "type": "boolean",
+          "description": ""
+        },
+        "message": {
+          "type": "string",
+          "description": ""
+        }
+      },
+      "required": []
+    }
+  },
+  "interfaceUniqId": "87511c8a-dfd9-4e93-ab47-36e07c5921c0",
+  "uniqId": "0d4d867e-0312-4e49-9c8e-51483abf99f0"
+}

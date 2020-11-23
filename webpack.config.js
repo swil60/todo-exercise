@@ -71,8 +71,7 @@ module.exports = {
     // make sure to include the plugin!
     new VueLoaderPlugin(),
     new Dotenv({
-      path:'.env',
-      process: false
+      path:'.env'
     })
   ]
 };

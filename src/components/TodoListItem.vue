@@ -52,7 +52,7 @@ export default {
     async removeItem()
     {
       try {
-          await this.$store.dispatch('todos/removeTodo',this.todo)
+          await this.$store.dispatch('todos/removeTodo',this.todo.id)
       } catch (error) {
         console.error(error);
       }
