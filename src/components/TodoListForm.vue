@@ -15,10 +15,9 @@ export default {
   name: 'TodoForm',
   methods:{
     async submitTodo(event){
-          console.log("i got fired",event);
         if(this.allowEmpty && this.isDescriptionEmpty)
         {
-
+          return
         }else
         {
           this.validate();
