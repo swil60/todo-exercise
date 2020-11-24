@@ -1,6 +1,5 @@
 
 import TodoList from '../components/TodoList.vue'
-import TodoListForm from '../components/TodoListForm.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -9,7 +8,7 @@ Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: TodoList },
-    { path: '/create', component: TodoListForm }
+    { path: '/:filter', component: TodoList }
 ]
 
 export default new VueRouter({

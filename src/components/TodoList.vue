@@ -22,7 +22,7 @@
       <todo-list-item :todo="item"></todo-list-item>
     </li>
     <li class="list-group-item footer">
-      <todo-list-toolbar @apply-filter-type="setFilterType"></todo-list-toolbar>
+      <todo-list-toolbar :activeFilter="$route.params.filter" @apply-filter-type="setFilterType"></todo-list-toolbar>
     </li>
   </ul>
 </div>
@@ -60,7 +60,13 @@ export default {
     },
     setFilterType(event,filterType)
     {
-      this.filterType = filterType
+      if(this.availableFilterTypes.includes(filterType))
+      {
+        this.$router.push({ path: `/${filterType}`})
+      }else
+      {
+        this.$router.push({ path: `/all`})
+      }
     },
     markAllNotesAsDone()
     {
@@ -68,6 +74,19 @@ export default {
           this.$store.dispatch('todos/markAllToDosAsDone')
       } catch (error) {
         
+      }
+    }
+  },
+  watch: {
+    $route(to, from) {
+      // react to route changes...
+      let navFilterType = this.$route.params.filter
+      if(this.availableFilterTypes.includes(navFilterType))
+      {
+        this.filterType = navFilterType
+      }else
+      {
+        this.$router.push({ path: `/all`})
       }
     }
   },
@@ -96,6 +115,7 @@ export default {
   data() {
     return {
         filterType:'all',
+        availableFilterTypes:['all','active','completed'],
         errorMessage:null,
         newTodo:{
           id:null,

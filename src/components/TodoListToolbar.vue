@@ -7,7 +7,7 @@
   </div>
     <div class="col-6">
       <div class="text-center">
-          <button class="btn btn-outline-primary btn-sm mr-2" v-for="filter in filters" :key="filter.name" :class="{ active: filter.isActive }" @click="setFilter($event,filter)">
+          <button class="btn btn-outline-primary btn-sm mr-2" v-for="filter in filters" :key="filter.name" :class="{ active: activeFilter == filter.type }" @click="setFilter($event,filter)">
             {{ filter.name }}
           </button>
       </div>
@@ -24,24 +24,26 @@
 import { mapGetters } from 'vuex'
 export default {
   name: 'TodoListToolbar',
+  props:{
+    activeFilter:{
+      type:String,
+      required:true
+    },
+  },
   data(){
       return {
-        activeFilter:null,
         filters:[
           {
             name:'All',
             type:'all',
-            isActive:true
           },
            {
             name:'Active',
             type:'active',
-            isActive:false
           },
           {
             name:'Completed',
             type:'completed',
-            isActive:false
           }
         ]
       }
@@ -57,15 +59,8 @@ export default {
    },
    setFilter($event,activeFilter)
    {
-     this.filters.forEach( (filter)=> {
-       filter.isActive = false
-     })
-     activeFilter.isActive = true;
      this.$emit('apply-filter-type',$event,activeFilter.type);
    }
-  },
-  created()
-  {
   }
 }
 </script>
