@@ -7,7 +7,7 @@
   </div>
     <div class="col-6">
       <div class="text-center">
-          <button class="btn btn-outline-primary btn-sm mr-2" v-for="filter in filters" :key="filter.name" :class="{ active: activeFilter == filter.type }" @click="setFilter($event,filter)">
+          <button  class="btn btn-outline-primary btn-sm mr-2" v-for="filter in filters" :key="filter.name" :class="{ 'active': activeFilter == filter.type }" :disabled="activeFilter == filter.type" @click="setFilter($event,filter)">
             {{ filter.name }}
           </button>
       </div>
@@ -67,5 +67,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .btn-outline-primary.active
+  {
+    background: #007bff;
+    color: #fff;
+  }
 
 </style>

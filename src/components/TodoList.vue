@@ -13,7 +13,7 @@
         <div class="col-md-2 text-center mt-2">
           <i class="fas fa-2x fa-chevron-down" @click="markAllNotesAsDone()"></i>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <todo-list-form :allowEmpty="true" :todo="newTodo" :actionMethod="'todos/createTodo'" @submitted="clearNewTodo()"></todo-list-form>
         </div>
       </div>

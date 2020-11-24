@@ -4,7 +4,7 @@
   "method": "GET",
   "projectUniqId": "523c1983-fa3f-4b1e-b668-38e4bd16c389",
   "description": "sample data for the to-do app",
-  "currentScene": "all",
+  "currentScene": "empty",
   "proxyConfig": {
     "enabled": false
   },
